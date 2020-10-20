@@ -10,7 +10,7 @@ liveSearch.function = function ($) {
             for (let i = 0; i < data.length; i++) {
                 type = '';
                 if (data[i].type !== '') {
-                    type = ' - <span class="character-type">' + boldText(data[i].type, find) + '</span>';
+                    type = ' <span class="character-type">en ' + boldText(data[i].type, find) + '</span>';
                 }
                 item = '<li data-id="' + data[i].id + '">' + boldText(data[i].name, find, '') + type + '</li>';
                 $('#livesearch-list').append(item);
@@ -32,7 +32,7 @@ liveSearch.function = function ($) {
 
     function getTextToFind(str)
     {
-        let positionFind = str.indexOf('-');
+        let positionFind = str.indexOf(' en ');
         if (positionFind === -1) {
             return str;
         }
