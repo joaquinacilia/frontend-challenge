@@ -5,9 +5,14 @@ liveSearch.function = function ($) {
     function populateList(options, find)
     {
         let item = '';
+        let type = '';
         $.each(options, function(key, data) {
             for (let i = 0; i < data.length; i++) {
-                item = '<p>' + boldText(data[i].name, find) + '</p>';
+                type = '';
+                if (data[i].type !== '') {
+                    type = ' - <span class="character-type">' + boldText(data[i].type, find) + '</span>';
+                }
+                item = '<li data-id="' + data[i].id + '">' + boldText(data[i].name, find, '') + type + '</li>';
                 $('#livesearch-list').append(item);
             }
         });
@@ -22,10 +27,20 @@ liveSearch.function = function ($) {
             return str;
         }
         let length = findUpper.length;
-        return str.substr(0, positionFind) + '<b>' + str.substr(positionFind, length) + '</b>' + str.substr(positionFind + length);
+        return str.substr(0, positionFind) + '<span class="text-bolded">' + str.substr(positionFind, length) + '</span>' + str.substr(positionFind + length);
+    }
+
+    function getTextToFind(str)
+    {
+        let positionFind = str.indexOf('-');
+        if (positionFind === -1) {
+            return str;
+        }
+        return str.substr(0, positionFind).trim();
     }
 
     return {
         populateList: populateList,
+        getTextToFind: getTextToFind
     }
 }($);

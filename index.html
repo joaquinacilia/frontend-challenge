@@ -3,25 +3,27 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Habitissimo Frontend Challenge</title>
-        <link rel="shortcut icon" href="./img/favicon.ico">
+        <link rel="shortcut icon" href="/img/favicon.ico">
+        <link rel="stylesheet" href="/css/livesearch/livesearch.css">
     </head>
     <body>
         <div class="container">
             <form action="#">
+                <input hidden="livesearch_id" name="livesearch_id" id="livesearch_id" value="" />
                 <div class="row">
-                    <div class="col-25">
+                    <div class="col">
                         <label for="livesearch">Encuentra profesionales de confianza</label>
                     </div>
-                    <div class="col-75">
+                    <div class="col">
                         <input type="text" id="livesearch" name="livesearch" placeholder="Qu&eacute; necesitas...">
                     </div>
                 </div>
-                <div id="livesearch-list"></div>
+                <ul id="livesearch-list"></ul>
             </form>
         </div>
     </body>
-    <script src="./js/library/jquery/jquery-3.5.1.min.js"></script>
-    <script src="./js/livesearch/livesearch.event.js"></script>
-    <script src="./js/livesearch/livesearch.function.js"></script>
-    <script src="./js/livesearch/livesearch.api.js"></script>
+    <script src="/js/library/jquery/jquery-3.5.1.min.js"></script>
+    <script src="/js/livesearch/livesearch.event.js"></script>
+    <script src="/js/livesearch/livesearch.function.js"></script>
+    <script src="/js/livesearch/livesearch.api.js"></script>
 </html>
