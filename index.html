@@ -9,16 +9,22 @@
     <body>
         <div class="container">
             <form action="#">
-                <input hidden="livesearch_id" name="livesearch_id" id="livesearch_id" value="" />
                 <div class="row">
                     <div class="col">
-                        <label for="livesearch">Encuentra profesionales de confianza</label>
-                    </div>
-                    <div class="col">
-                        <input type="text" id="livesearch" name="livesearch" placeholder="Qu&eacute; necesitas...">
+                        <label>Encuentra profesionales de confianza</label>
+                        <input type="hidden" name="livesearch_1"  value="" />
+                        <input type="text" class="livesearch" name="livesearch_1" placeholder="Qu&eacute; necesitas...">
+                        <ul class="livesearch-list hidden"></ul>
                     </div>
                 </div>
-                <ul id="livesearch-list"></ul>
+                <div class="row">
+                    <div class="col">
+                        <label>Encuentra profesionales de confianza (a&ntilde;adido para comprobar el funcionamiento independiente de cada buscador)</label>
+                        <input type="hidden" name="livesearch_2"  value="" />
+                        <input type="text" class="livesearch" name="livesearch_2" placeholder="Qu&eacute; necesitas...">
+                        <ul class="livesearch-list hidden"></ul>
+                    </div>
+                </div>
             </form>
         </div>
     </body>

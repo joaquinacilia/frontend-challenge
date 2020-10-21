@@ -2,7 +2,7 @@ var liveSearch = liveSearch || {};
 
 liveSearch.function = function ($) {
 
-    function populateList(options, find)
+    function populateList(options, find, list)
     {
         let item = '';
         let type = '';
@@ -13,7 +13,7 @@ liveSearch.function = function ($) {
                     type = ' <span class="character-type">en ' + boldText(data[i].type, find) + '</span>';
                 }
                 item = '<li data-id="' + data[i].id + '">' + boldText(data[i].name, find, '') + type + '</li>';
-                $('#livesearch-list').append(item);
+                list.append(item);
             }
         });
     }

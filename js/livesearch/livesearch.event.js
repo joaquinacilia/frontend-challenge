@@ -1,29 +1,34 @@
-$('#livesearch').keyup(function(e) {
-    $('#livesearch-list').empty();
+$('.livesearch').keyup(function(e) {
+    let listSearch = $(this);
+    let listItems = $(this).parent().find('.livesearch-list');
+    listItems.empty();
     if ($(this).val().length >= 1) {
-        $('#livesearch-list').show();
+        listItems.show();
         liveSearch.api.filterData($(this).val(), function(data) {
-            liveSearch.function.populateList(data, $('#livesearch').val());
+            liveSearch.function.populateList(data, listSearch.val(), listItems);
         });
 
         return true;
     }
 });
 
-$('#livesearch').focus(function(e) {
-    $('#livesearch').removeClass('loading');
+$('.livesearch').focus(function(e) {
+    $(this).removeClass('loading');
     if ($(this).val().length >= 1) {
-        $('#livesearch-list').show();
+        let listItems = $(this).parent().find('.livesearch-list');
+        listItems.show();
     }
 });
 
-$('#livesearch-list').on('click', 'li', function() {
-    $('#livesearch').val(liveSearch.function.getTextToFind($(this).text()));
-    $('#livesearch_id').val($(this).data('id'));
-    $('#livesearch-list').hide();
-    $('#livesearch').addClass('loading');
-    $('#livesearch-list').empty();
-    liveSearch.api.filterData($('#livesearch').val(), function(data) {
-        liveSearch.function.populateList(data, $('#livesearch').val());
+$('.livesearch-list').on('click', 'li', function() {
+    let listItems = $(this).parent();
+    let listSearch = listItems.parent().find('.livesearch');
+    listItems.parent().find('input[type=hidden]').val($(this).data('id'));
+    listSearch.val(liveSearch.function.getTextToFind($(this).text()));
+    listSearch.addClass('loading');
+    listItems.empty();
+    listItems.hide();
+    liveSearch.api.filterData(listSearch.val(), function(data) {
+        liveSearch.function.populateList(data, listSearch.val(), listItems);
     });
 });
